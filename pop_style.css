@@ -1,0 +1,283 @@
+:root {
+    --pop-yellow: #FFFF00;
+    --pop-pink: #FF007F;
+    --pop-blue: #00FFFF;
+    --pop-black: #000000;
+    --pop-white: #FFFFFF;
+    --pop-green: #00FF00;
+}
+
+body {
+    background-color: var(--pop-blue);
+    background-image: radial-gradient(var(--pop-black) 2px, transparent 2px);
+    background-size: 30px 30px;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--pop-black);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* 1. TYPOGRAPHY: NEW "STICKER" STYLE (潰れない縁取り) */
+.comic-text {
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--pop-white);
+    /* 縁取りではなくシャドウで輪郭を作ることで文字を潰さない */
+    text-shadow:
+        2px 2px 0 var(--pop-black),
+        -2px 2px 0 var(--pop-black),
+        2px -2px 0 var(--pop-black),
+        -2px -2px 0 var(--pop-black),
+        4px 4px 0 var(--pop-black);
+    /* 立体感 */
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 7vw, 4.5rem);
+    background: var(--pop-white);
+    display: inline-block;
+    padding: 15px 25px;
+    transform: rotate(-1deg);
+    border: 6px solid var(--pop-black);
+    box-shadow: 10px 10px 0px var(--pop-black);
+    margin: 20px 0;
+}
+
+/* 2. COLORFUL STICKERS (添付3への対応：色を入れてポップに) */
+.sticker-pink {
+    background: var(--pop-pink);
+    color: var(--pop-white);
+    padding: 5px 15px;
+    border: 4px solid var(--pop-black);
+    box-shadow: 5px 5px 0px var(--pop-black);
+    display: inline-block;
+    transform: rotate(-2deg);
+}
+
+.sticker-yellow {
+    background: var(--pop-yellow);
+    color: var(--pop-black);
+    padding: 5px 15px;
+    border: 4px solid var(--pop-black);
+    box-shadow: 5px 5px 0px var(--pop-black);
+    display: inline-block;
+    transform: rotate(1deg);
+}
+
+/* 3. SPEECH BUBBLE (添付3のリデザイン) */
+.speech-bubble {
+    position: relative;
+    background: var(--pop-white);
+    border: 6px solid var(--pop-black);
+    border-radius: 50px;
+    padding: 25px 45px;
+    display: inline-block;
+    box-shadow: 10px 10px 0px var(--pop-black);
+    margin-bottom: 40px;
+    animation: shake 0.6s infinite;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(-1deg);
+    }
+
+    50% {
+        transform: rotate(1deg);
+    }
+
+    100% {
+        transform: rotate(-1deg);
+    }
+}
+
+/* 4. HERO IMAGE (おばあちゃん) */
+.grandma-container {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.grandma-img {
+    width: 100%;
+    border: 10px solid var(--pop-black);
+    box-shadow: 20px 20px 0px var(--pop-pink);
+    transform: rotate(1deg);
+}
+
+/* 5. EXPLOSION ACCENT */
+.explosion-box {
+    background: var(--pop-pink);
+    color: var(--pop-white);
+    clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+    padding: 45px;
+    border: 6px solid var(--pop-black);
+    text-align: center;
+    margin: 60px 0;
+}
+
+/* 6. POP CTA (添付2への対応：文字を白抜きにして視認性MAX) */
+.pop-cta {
+    background: var(--pop-green);
+    border: 6px solid var(--pop-black);
+    padding: 25px 50px;
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    font-weight: 900;
+    color: var(--pop-white);
+    /* 黒から白に変更して潰れを防止 */
+    text-shadow: 3px 3px 0 var(--pop-black);
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 10px 10px 0px var(--pop-black);
+    transition: 0.1s;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.pop-cta:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 14px 14px 0px var(--pop-black);
+}
+
+/* 7. LIST ITEMS (添付1への対応：アイコンと数字を際立たせる) */
+.list-sticker {
+    background: var(--pop-white);
+    border: 5px solid var(--pop-black);
+    padding: 20px;
+    margin-bottom: 20px;
+    font-weight: 900;
+    box-shadow: 8px 8px 0 var(--pop-black);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2rem;
+}
+
+.list-index {
+    background: var(--pop-pink);
+    color: var(--pop-white);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid var(--pop-black);
+    flex-shrink: 0;
+    transform: rotate(-5deg);
+    font-size: 1.5rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .speech-bubble {
+        padding: 15px 25px;
+        font-size: 1rem;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .pop-cta {
+        padding: 15px 30px;
+    }
+}
+
+/* 8. CHAT SECTION (Added) */
+.chat-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.chat-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.chat-row.right {
+    flex-direction: row-reverse;
+}
+
+.chat-icon {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    border: 3px solid var(--pop-black);
+    border-radius: 50%;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 4px 4px 0 var(--pop-black);
+}
+
+.chat-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.chat-bubble {
+    position: relative;
+    background: var(--pop-white);
+    border: 3px solid var(--pop-black);
+    border-radius: 20px;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+    max-width: 70%;
+}
+
+.chat-row.left .chat-bubble {
+    border-top-left-radius: 0;
+}
+
+.chat-row.right .chat-bubble {
+    background: #e0f7fa;
+    /* Light cyan for user */
+    border-top-right-radius: 0;
+}
+
+.chat-row.left .chat-bubble::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -20px;
+    border-width: 0 20px 20px 0;
+    border-style: solid;
+    border-color: transparent var(--pop-black) transparent transparent;
+}
+
+.chat-row.left .chat-bubble::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: -13px;
+    border-width: 0 15px 15px 0;
+    border-style: solid;
+    border-color: transparent var(--pop-white) transparent transparent;
+}
+
+.chat-row.right .chat-bubble::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    border-width: 20px 20px 0 0;
+    border-style: solid;
+    border-color: var(--pop-black) transparent transparent transparent;
+}
+
+.chat-row.right .chat-bubble::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    right: -13px;
+    border-width: 15px 15px 0 0;
+    border-style: solid;
+    border-color: #e0f7fa transparent transparent transparent;
+}
